@@ -84,18 +84,84 @@
             \item 若$\Delta y = A\Delta x+o(\Delta x)$，则 $A=f'(x_0)$；
             \item 设 $y=f(x)$ 可导，则 $\dd{y} = \dd{f(x)}=f'(x)\dd{x}$，如 $\dd{x^3}=3x^2\dd{x}$。 
         \end{enumerate}
-    
+    \end{note}
     \section{求导工具}
     （一）求导公式：
     \begin{enumerate}
         \item $C'=0$
         \item $(x^a)'=ax^{a-1}$
         \item $(a^x)'=a^x\ln a$，特别地，$(e^x)'=e^x$
-        \item $(\log_a x)'=\frac{1}{x\ln a}$，特别地，$(\ln x)'=\frac{1}{x}$
-        \item $(\sin x)'=\cos x,(\cos x)'=-\sin x,(\tan x)'=\sec ^2 x$
+        \item $(\log_a x)'=\displaystyle\frac{1}{x\ln a}$，特别地，$(\ln x)'=\displaystyle\frac{1}{x}$
+        \item $(\sin x)'=\cos x,(\cos x)'=-\sin x,(\tan x)'=\sec ^2 x,(\cot x)'= - \csc^2 x,$
+        
+        $(\sec x)'=\sec\tan x,(\csc x)' = -\csc\cot x$
+        \item $(\arcsin x)' = \displaystyle\frac{1}{\sqrt{1-x^2}},(\arccos x)' = -\displaystyle\frac{1}{\sqrt{1-x^2}},(\arctan x)' = \displaystyle\frac{1}{1+x^2}$,
+        
+        $(\arccot x)' = -\displaystyle\frac{1}{1+x^2}$。
     \end{enumerate}
 
-\end{note}
+    （二）四则运算：
+    \begin{enumerate}
+        \item $(u\pm v)'=u'\pm v$
+        \item 
+        \begin{enumerate}
+            \item $(ku)'=ku'$
+            \item $(uv)'=uv'+u'v$
+            \item $(uvw)'=u'vw+uv'w+uvw'$
+            \begin{example}
+                $f(x) = x(x+1) \cdots (x+99)$，求$f'(0)$。
+            \end{example}
+            \begin{solution}
+                记$g(x) = (x+1)(x+2)\cdots(x+99)$，根据乘积求导法则，$(xg(x))' = g(x)+xg'(x)$，将$x=0$代入得 $f'(0)=99!$。
+            \end{solution}
+        \end{enumerate}
+        \item $(\displaystyle\frac{u}{v})' = \displaystyle\frac{u'v-uv'}{v^2}$。
+    \end{enumerate}
+
+    （三） 复合函数
+    \begin{theorem}{链式法则}{chain value}
+        若 $y = f(u)$ 可导，$u = \varphi(x)$ 可导且 $\var\phi'(x)\neq 0$，则 $y=f(\varphi(x))$可导且
+        \begin{align*}
+            \frac{\dd{y}}{\dd{x}} &= \frac{\dd{y}}{\dd{u}}\cdot \frac{\dd{u}}{\dd{x}}\\
+            &=f'(u) \cdot \varphi'(x)\\
+            &=f'[\varphi(x)]\cdot \varphi'(x)
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        由于 $\varphi'(x)=\lim\limits_{\Delta x \to 0}\displaystyle\frac{\Delta u}{\Delta x}\neq 0$，故 $\Delta u$ 与 $\Delta x$ 为同阶无穷小，也即 $\Delta u = O(\Delta x)$。而 
+        \begin{align*}
+        \displaystyle\frac{\dd{y}}{\dd{x}} &= \lim\limits_{\Delta x \to 0}\displaystyle\frac{\Delta y}{\Delta x}\\
+        &=\lim\limits_{\Delta x \to 0}\displaystyle\frac{\Delta y}{\Delta u} \cdot \displaystyle\frac{\Delta u}{\Delta x}\\
+        &=\lim\limits_{\Delta x \to 0}\displaystyle\frac{\Delta y}{\Delta u} \cdot \lim\limits_{\Delta x \to 0}\displaystyle\frac{\Delta u}{\Delta x}\\
+        &=\lim\limits_{\Delta u \to 0}\displaystyle\frac{\Delta y}{\Delta u} \cdot \varphi'(x) \text{（注：这一步用到了同阶无穷小这个条件）}\\
+        &=f'[\varphi(x)]\cdot\varphi'(x). 
+        \end{align*}
+        \qed
+    \end{proof}
+
+    \begin{example}
+        设 $y = \ln\arctan x^2$，求 $\displaystyle\frac{\dd{y}}{\dd{x}}$。
+    \end{example}
+
+    \begin{solution}
+        $\displaystyle\frac{\dd{y}}{\dd{x}} = \displaystyle\frac{1}{\arctan x^2}\cdot \displaystyle\frac{1}{1+(x^2)^2}\cdot 2x$
+    \end{solution}
+
+    \begin{example}
+        $ y = e^{(\sin{\frac{1}{x}})^2}$，求 $y'$。
+    \end{example}
+
+    \begin{solution}
+        $ y' = e^{(\sin{\frac{1}{x}})^2}\cdot 2\sin{\frac{1}{x}}\cdot \cos{\frac{1}{x}} \cdot (-\frac{1}{x^2})$
+    \end{solution}
+
+    （四）反函数导数
+    
+    $ y = f(x) \Rightarrow  x = \varphi(y)$
+ 
+
+
 
 
 
